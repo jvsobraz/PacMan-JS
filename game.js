@@ -3,7 +3,7 @@ const canvasContext = canvas.getContext("2d");
 const pacmanFrames = document.getElementById("animation");
 const ghostframes = document.getElementById("ghosts");
 
-let createReact = (x, y, width, height, color) => {
+let createRect = (x, y, width, height, color) => {
     canvasContext.fillStyle = color;
     canvasContext.fillRect(x, y, width, height);
 }
