@@ -1,12 +1,12 @@
 const canvas = document.getElementById("canvas");
 const canvasContext = canvas.getContext("2d");
 const pacmanFrames = document.getElementById("animation");
-const ghostframes = document.getElementById("ghosts");
+const ghostFrames = document.getElementById("ghosts");
 
 let createRect = (x, y, width, height, color) => {
     canvasContext.fillStyle = color;
     canvasContext.fillRect(x, y, width, height);
-}
+};
 
 const DIRECTION_RIGHT = 4;
 const DIRECTION_UP = 3;
@@ -15,12 +15,13 @@ const DIRECTION_BOTTOM = 1;
 let lives = 3;
 let ghostCount = 4;
 let ghostImageLocations = [
-    {x: 0, y: 0},
-    {x: 176, y: 0},
-    {x: 0, y: 121},
-    {x: 176, y: 121},
+    { x: 0, y: 0 },
+    { x: 176, y: 0 },
+    { x: 0, y: 121 },
+    { x: 176, y: 121 },
 ];
 
+// Game variables
 let fps = 30;
 let pacman;
 let oneBlockSize = 20;
@@ -30,6 +31,7 @@ let wallSpaceWidth = oneBlockSize / 1.6;
 let wallOffset = (oneBlockSize - wallSpaceWidth) / 2;
 let wallInnerColor = "black";
 
+// we now create the map of the walls,
 // if 1 wall, if 0 not wall
 // 21 columns // 23 rows
 let map = [
@@ -59,7 +61,7 @@ let map = [
 ];
 
 let randomTargetsForGhosts = [
-    { x: 1 * oneBlockSize, y : 1 * oneBlockSize },
+    { x: 1 * oneBlockSize, y: 1 * oneBlockSize },
     { x: 1 * oneBlockSize, y: (map.length - 2) * oneBlockSize },
     { x: (map[0].length - 2) * oneBlockSize, y: oneBlockSize },
     {
@@ -67,6 +69,12 @@ let randomTargetsForGhosts = [
         y: (map.length - 2) * oneBlockSize,
     },
 ];
+
+// for (let i = 0; i < map.length; i++) {
+//     for (let j = 0; j < map[0].length; j++) {
+//         map[i][j] = 2;
+//     }
+// }
 
 let createNewPacman = () => {
     pacman = new Pacman(
@@ -93,7 +101,7 @@ let restartPacmanAndGhosts = () => {
 let onGhostCollision = () => {
     lives--;
     restartPacmanAndGhosts();
-    if (lives == 0) {       
+    if (lives == 0) {
     }
 };
 
